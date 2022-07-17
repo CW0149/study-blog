@@ -19,6 +19,7 @@ interface Props {
   courses: BCourse[];
   drawerOpen: boolean;
   handleDrawerToggle: () => void;
+  parentPath: string;
 }
 
 export const CoursesDrawer: FC<Props> = ({
@@ -27,6 +28,7 @@ export const CoursesDrawer: FC<Props> = ({
   courses,
   drawerOpen,
   handleDrawerToggle,
+  parentPath,
 }) => {
   const drawer = (
     <div>
@@ -40,7 +42,7 @@ export const CoursesDrawer: FC<Props> = ({
           </MenuItem>
         </NavLink>
         {courses.map(({ bvid, title }) => (
-          <NavLink key={bvid} to={`/study/courses/${bvid}`}>
+          <NavLink key={bvid} to={`${parentPath}/${bvid}`}>
             {({ isActive }) => (
               <MenuItem selected={isActive}>
                 <Typography noWrap>{title}</Typography>

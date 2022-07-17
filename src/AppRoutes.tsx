@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { PATHS } from './constants/routes';
+import { COLLECTIONS, VIDEO_COURSES } from './constants/video';
 import { Courses } from './pages/Courses';
 import { Gitbooks } from './pages/Gitbooks';
 import { Home } from './pages/Home';
@@ -15,7 +16,18 @@ export const AppRoutes: FC = () => {
 
         <Route path={PATHS.courses} element={<Courses />} />
         <Route path={PATHS.gitbooks} element={<Gitbooks />} />
-        <Route path={`${PATHS.courses}/:bvid`} element={<VideoCourse />} />
+        <Route
+          path={`${PATHS.courses}/:bvid`}
+          element={
+            <VideoCourse data={VIDEO_COURSES} parentPath={PATHS.courses} />
+          }
+        />
+        <Route
+          path={`${PATHS.collections}/:bvid`}
+          element={
+            <VideoCourse data={COLLECTIONS} parentPath={PATHS.collections} />
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

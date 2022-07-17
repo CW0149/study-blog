@@ -47,9 +47,10 @@ export const StudyCards: FC<Props> = ({ data, cardMedia, linkConfig }) => {
             },
           }}
         >
-          {cardMedia(item)}
-
-          <CardContent>
+          <Box mt={-1}>{cardMedia(item)}</Box>
+          <CardContent
+            sx={{ mb: -1, mt: -2, position: 'relative', background: '#fff' }}
+          >
             <Typography
               gutterBottom
               variant="h6"

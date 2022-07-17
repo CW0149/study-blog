@@ -11,7 +11,7 @@ import { FC } from 'react';
 import { StudyCards } from '../../components/StudyCards';
 import { GIT_BOOKS } from '../../constants/gitbooks';
 import { PATHS } from '../../constants/routes';
-import { VIDEO_COURSES } from '../../constants/video';
+import { COLLECTIONS, VIDEO_COURSES } from '../../constants/video';
 
 const nameToComponent: Record<string, any> = {
   NoteAlt: NoteAlt,
@@ -80,6 +80,26 @@ export const GitbooksCards: FC = () => {
           })}
         </CardMedia>
       )}
+    />
+  );
+};
+
+export const CollectionCards: FC = () => {
+  const data = COLLECTIONS.map((course) => ({
+    key: course.bvid,
+    title: course.title,
+    cover: course.cover,
+    linkTo: `${PATHS.collections}/${course.bvid}`,
+  }));
+
+  return (
+    <StudyCards
+      data={data}
+      linkConfig={{
+        isUrl: false,
+        linkText: '进入',
+      }}
+      cardMedia={({ cover }) => <CardMedia component="img" image={cover} />}
     />
   );
 };

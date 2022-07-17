@@ -95,3 +95,30 @@ export const VIDEO_COURSES: BCourse[] = [
   //     'http://i2.hdslb.com/bfs/archive/bc6174b9358e702e703f89c30fcae2576105a3b2.png',
   // },
 ];
+
+export const COLLECTIONS: BCourse[] = [
+  {
+    bvid: 'BV1vA411W7fY',
+    title: '冥想正念指南',
+    cover:
+      'http://i2.hdslb.com/bfs/archive/eb413685a39b1554294a974132b58038ef456196.jpg',
+  },
+  {
+    bvid: 'BV1Rt4y1C7uy',
+    title: '世界上最非凡的住宅',
+    cover:
+      'http://i2.hdslb.com/bfs/archive/6cd91a96d0ea8c9ead13c81803768d0d870bc73e.jpg',
+  },
+  {
+    bvid: 'BV1KT41137GV',
+    title: '瑞·达利欧合集',
+    cover:
+      'http://i0.hdslb.com/bfs/archive/8a8bdc01f7c99b6fb289724fb5cdd885efea81e4.jpg',
+  },
+  {
+    bvid: 'BV1qW4y1r7KT',
+    title: '华尔街',
+    cover:
+      'http://i2.hdslb.com/bfs/archive/bc6174b9358e702e703f89c30fcae2576105a3b2.png',
+  },
+];

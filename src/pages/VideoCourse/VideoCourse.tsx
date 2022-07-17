@@ -2,8 +2,7 @@ import { CssBaseline, Skeleton, Stack, Toolbar } from '@mui/material';
 import { Box } from '@mui/system';
 import { FC, useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Lesson } from '../../constants/types';
-import { VIDEO_COURSES } from '../../constants/video';
+import { BCourse, Lesson } from '../../constants/types';
 import { fetchBvPlaylist } from '../../helpers/video';
 import { CoursesDrawer } from './CoursesDrawer';
 import { VideoCourseLesson } from './VideoCourseLesson';
@@ -11,16 +10,17 @@ import { VideoCourseTopBar } from './VideoCourseTopBar';
 
 const drawerWidth = 240;
 
-export const VideoCourse: FC = () => {
+type Props = {
+  parentPath: string;
+  data: BCourse[];
+};
+export const VideoCourse: FC<Props> = ({ data, parentPath }) => {
   const [lessons, setLessons] = useState([] as Lesson[]);
   const [expanded, setExpanded] = useState(0);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const { bvid } = useParams();
-  const course = useMemo(
-    () => VIDEO_COURSES.find((item) => item.bvid === bvid),
-    [bvid]
-  );
+  const course = useMemo(() => data.find((item) => item.bvid === bvid), [bvid]);
 
   useEffect(() => {
     if (!bvid) return;
@@ -73,9 +73,10 @@ export const VideoCourse: FC = () => {
 
       <CoursesDrawer
         drawerWidth={drawerWidth}
-        courses={VIDEO_COURSES}
+        courses={data}
         drawerOpen={drawerOpen}
         handleDrawerToggle={handleDrawerToggle}
+        parentPath={parentPath}
       />
 
       <Box
