@@ -24,63 +24,68 @@ type Props = {
     linkText: string;
   };
 };
+const CARD_GAPPING_PERCENTAGE = 0.8;
+
 export const StudyCards: FC<Props> = ({ data, cardMedia, linkConfig }) => {
   return (
-    <Box display="flex" flexWrap="wrap" padding={{ xs: 2, md: 1 }}>
-      {data.map((item) => (
-        <Card
-          key={item.key}
-          sx={{
-            maxWidth: {
-              md: 500,
-            },
-            width: {
-              xs: '100%',
-              md: '23%',
-            },
-            margin: {
-              xs: 0,
-              md: '1%',
-            },
-            mb: {
-              xs: 2,
-            },
-          }}
-        >
-          <Box mt={-1}>{cardMedia(item)}</Box>
-          <CardContent
-            sx={{ mb: -1, mt: -2, position: 'relative', background: '#fff' }}
+    <Box padding={{ xs: 2, md: 3 }}>
+      <Box
+        display="flex"
+        flexWrap="wrap"
+        sx={{ m: { md: `-${CARD_GAPPING_PERCENTAGE}%` } }}
+      >
+        {data.map((item) => (
+          <Card
+            key={item.key}
+            sx={{
+              width: {
+                xs: '100%',
+                md: `${25 - CARD_GAPPING_PERCENTAGE * 2}%`,
+              },
+              margin: {
+                xs: 0,
+                md: `${CARD_GAPPING_PERCENTAGE}%`,
+              },
+              mb: {
+                xs: 2,
+              },
+            }}
           >
-            <Typography
-              gutterBottom
-              variant="h6"
-              component="div"
-              fontWeight={400}
+            <Box mt={-1}>{cardMedia(item)}</Box>
+            <CardContent
+              sx={{ mb: -1, mt: -2, position: 'relative', background: '#fff' }}
             >
-              {item.title}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            {linkConfig.isUrl ? (
-              <MuiLink
-                href={item.linkTo}
-                underline="none"
-                target={linkConfig.target}
+              <Typography
+                gutterBottom
+                variant="h6"
+                component="div"
+                fontWeight={400}
               >
-                <Button startIcon={<ArrowForward />}>
-                  {linkConfig.linkText}
-                </Button>
-              </MuiLink>
-            ) : (
-              <Link to={item.linkTo}>
-                <Button startIcon={<ArrowForward />}>
-                  {linkConfig.linkText}
-                </Button>
-              </Link>
-            )}
-          </CardActions>
-        </Card>
-      ))}
+                {item.title}
+              </Typography>
+            </CardContent>
+            <CardActions>
+              {linkConfig.isUrl ? (
+                <MuiLink
+                  href={item.linkTo}
+                  underline="none"
+                  target={linkConfig.target}
+                >
+                  <Button startIcon={<ArrowForward />}>
+                    {linkConfig.linkText}
+                  </Button>
+                </MuiLink>
+              ) : (
+                <Link to={item.linkTo}>
+                  <Button startIcon={<ArrowForward />}>
+                    {linkConfig.linkText}
+                  </Button>
+                </Link>
+              )}
+            </CardActions>
+          </Card>
+        ))}
+      </Box>
     </Box>
   );
 };

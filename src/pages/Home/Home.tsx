@@ -64,7 +64,11 @@ export const Home: FC = () => {
             sx={{ background: alpha(COLORS[i], 0.2) }}
             borderTop={`.5px dotted ${alpha(COLORS[i], 1)}`}
           >
-            <Typography variant="h5" ml={3} color="text.primary">
+            <Typography
+              variant="h5"
+              sx={{ ml: { xs: 2, md: 3 } }}
+              color="text.primary"
+            >
               {name}
             </Typography>
             <Component />
