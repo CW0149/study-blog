@@ -9,6 +9,12 @@ export const VIDEO_COURSES: BCourse[] = [
     noteFolderName: 'china-economics-linyifu',
   },
   {
+    bvid: 'BV1GK4y1S7FF',
+    title: '中国经济专题 徐高',
+    cover:
+      'http://i1.hdslb.com/bfs/archive/766f540b84cb010470ab96ac6d2659eb7e9056d1.jpg',
+  },
+  {
     bvid: 'BV19i4y1M79G',
     title: '新结构经济学 Part1',
     cover:
@@ -23,16 +29,16 @@ export const VIDEO_COURSES: BCourse[] = [
     // noteFolderName: '新结构经济学2',
   },
   {
+    bvid: 'BV1Nb4y1d7AB',
+    title: '经济学原理',
+    cover:
+      'http://i2.hdslb.com/bfs/archive/9965136ef6c6dc89786c48dfda5c88cb65706250.jpg',
+  },
+  {
     bvid: 'BV173411e7nm',
     title: '微观经济学',
     cover:
       'http://i2.hdslb.com/bfs/archive/6852b5de43d8a6f23bc8ce246b8352dd7cb64313.jpg',
-  },
-  {
-    bvid: 'BV1GK4y1S7FF',
-    title: '宏观经济学',
-    cover:
-      'http://i0.hdslb.com/bfs/archive/22cfaa92525276a4a4cdc054c3e86fd61e1676c6.jpg',
   },
   {
     bvid: 'BV1pW41117rs',

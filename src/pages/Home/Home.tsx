@@ -50,7 +50,7 @@ export const Home: FC = () => {
         </Toolbar>
       </AppBar>
 
-      <Box>
+      <Box pt={1}>
         <Toolbar />
         {sections.map(({ name, component: Component }, i) => (
           <Box

@@ -42,15 +42,7 @@ export const CoursesCards: FC = () => {
         isUrl: false,
         linkText: '进入',
       }}
-      cardMedia={({ cover }) => (
-        <CardMedia
-          component="img"
-          sx={{
-            height: { md: 180, xs: 300 },
-          }}
-          image={cover}
-        />
-      )}
+      cardMedia={({ cover }) => <CardMedia component="img" image={cover} />}
     />
   );
 };
