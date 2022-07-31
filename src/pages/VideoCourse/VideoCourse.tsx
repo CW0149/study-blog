@@ -60,7 +60,7 @@ export const VideoCourse: FC<Props> = ({ data, parentPath }) => {
       <CssBaseline />
 
       <VideoCourseTopBar
-        title={course?.title}
+        title={`${course?.title} | ${lessons.length}节`}
         appBarProps={{
           position: 'fixed',
           sx: {

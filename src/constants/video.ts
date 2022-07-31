@@ -88,12 +88,6 @@ export const VIDEO_COURSES: BCourse[] = [
     cover:
       '//i1.hdslb.com/bfs/archive/ba6a13bfdbe241dd0f619f1a729f8bdfe2c98b82.png',
   },
-  // {
-  //   bvid: 'BV1qW4y1r7KT',
-  //   title: '《华尔街》纪录片 ',
-  //   cover:
-  //     '//i2.hdslb.com/bfs/archive/bc6174b9358e702e703f89c30fcae2576105a3b2.png',
-  // },
 ];
 
 export const COLLECTIONS: BCourse[] = [
@@ -114,6 +108,12 @@ export const COLLECTIONS: BCourse[] = [
     title: '瑞·达利欧合集',
     cover:
       '//i0.hdslb.com/bfs/archive/8a8bdc01f7c99b6fb289724fb5cdd885efea81e4.jpg',
+  },
+  {
+    bvid: 'BV1qK4y1p7wG',
+    title: '巴菲特合集',
+    cover:
+      '//i0.hdslb.com/bfs/archive/d0f84b4906edd5b8132b80f6e7c968bc2c821ff2.jpg',
   },
   {
     bvid: 'BV1qW4y1r7KT',

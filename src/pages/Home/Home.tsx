@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import {
   alpha,
   AppBar,
@@ -17,6 +17,7 @@ import {
 import { ReactComponent as Logo } from '../../images/svg/logo.svg';
 import { ReactComponent as MobileLogo } from '../../images/svg/mobileLogo.svg';
 import { PATHS } from '../../constants/routes';
+import gongan from '../../images/gongan.png';
 
 const COLORS = [blue['200'], blue['100'], blue['50']];
 
@@ -104,14 +105,36 @@ const Footer: FC = () => {
       <Divider orientation="vertical" flexItem sx={{ ml: 1, mr: 1 }} />
 
       <Typography variant="caption">
-        互联网ICP备案：
         <Link
           underline="none"
           href="https://beian.miit.gov.cn"
           target="_blank"
           color="inherit"
         >
-          粤ICP备2022081904号-1
+          粤ICP备 2022081904号-1
+        </Link>
+      </Typography>
+
+      <Divider orientation="vertical" flexItem sx={{ ml: 1, mr: 1 }} />
+
+      <Typography variant="caption">
+        <img
+          src={gongan}
+          alt="公安图标"
+          width="20"
+          style={{
+            verticalAlign: 'middle',
+            marginRight: '4px',
+            marginTop: '-2px',
+          }}
+        />
+        <Link
+          underline="none"
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030602006956"
+          target="_blank"
+          color="inherit"
+        >
+          粤公网安备 44030602006956号
         </Link>
       </Typography>
     </Box>
