@@ -55,6 +55,11 @@ export const VideoCourseLesson: FC<Props> = ({
             <OpenInNew fontSize="small" sx={{ verticalAlign: 'middle' }} />
             <Box component="span" sx={{ verticalAlign: 'middle' }} m={[0, 0.5]}>
               {lesson.title}
+              {lesson.created && (
+                <span>
+                  &nbsp; - {new Date(lesson.created * 1000).toLocaleString()}
+                </span>
+              )}
             </Box>
           </Link>
         </Typography>

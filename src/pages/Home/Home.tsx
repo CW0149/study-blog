@@ -30,7 +30,7 @@ const sections = [
     component: CoursesCards,
   },
   {
-    id: 'myMedias',
+    id: 'Sadhguru',
     name: 'Sadhguru',
     component: MediaCards,
     props: {

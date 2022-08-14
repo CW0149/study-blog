@@ -23,6 +23,7 @@ export type Lesson = {
   url: string;
   num: number;
   noteFolderName?: string;
+  created?: number;
 };
 
 export type NotePathObj = {
@@ -41,6 +42,7 @@ export type MediaItem = {
   bvid: string;
   title: string;
   url: string;
+  created: number;
 };
 
 export type MediaTlistItem = {
