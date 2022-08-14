@@ -1,4 +1,4 @@
-import { BCourse } from './types';
+import { BCourse, BMedia } from './types';
 
 export const VIDEO_COURSES: BCourse[] = [
   {
@@ -122,3 +122,26 @@ export const COLLECTIONS: BCourse[] = [
       '//i2.hdslb.com/bfs/archive/bc6174b9358e702e703f89c30fcae2576105a3b2.png',
   },
 ];
+
+export const MEDIA_LIST: BMedia[] = [
+  {
+    mid: '489162014',
+    title: 'Sadhguru',
+    cover:
+      '//i1.hdslb.com/bfs/archive/5ada48cc1a9872994873f06b45a062893843dc1a.png',
+  },
+];
+
+export const MEDIAS: Record<string, BMedia> = {
+  Sadhguru: {
+    mid: '489162014',
+    title: 'Sadhguru',
+    cover:
+      '//i1.hdslb.com/bfs/archive/5ada48cc1a9872994873f06b45a062893843dc1a.png',
+  },
+};
+
+export const MEDIA_ID_TO_MEDIA = Object.keys(MEDIAS).reduce((res, key) => {
+  res[MEDIAS[key].mid] = MEDIAS[key];
+  return res;
+}, {} as Record<string, BMedia>);

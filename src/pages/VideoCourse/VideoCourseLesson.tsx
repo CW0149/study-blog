@@ -14,8 +14,8 @@ import { getNotePathObj } from '../../helpers/video';
 
 type Props = {
   lesson: Lesson;
-  expanded?: Lesson['cid'];
-  handleChange: (cid: Lesson['cid']) => () => void;
+  expanded?: Lesson['id'];
+  handleChange: (id: Lesson['id']) => () => void;
 };
 export const VideoCourseLesson: FC<Props> = ({
   lesson,
@@ -43,8 +43,8 @@ export const VideoCourseLesson: FC<Props> = ({
 
   return (
     <Accordion
-      expanded={expanded === lesson.cid}
-      onChange={handleChange(lesson.cid)}
+      expanded={expanded === lesson.id}
+      onChange={handleChange(lesson.id)}
     >
       <AccordionSummary
         expandIcon={<ExpandMore />}

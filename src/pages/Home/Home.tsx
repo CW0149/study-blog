@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect } from 'react';
 import {
   alpha,
   AppBar,
@@ -13,24 +13,37 @@ import {
   CollectionCards,
   CoursesCards,
   GitbooksCards,
+  MediaCards,
 } from '../../components/StudyCardsWithData';
 import { ReactComponent as Logo } from '../../images/svg/logo.svg';
 import { ReactComponent as MobileLogo } from '../../images/svg/mobileLogo.svg';
 import { PATHS } from '../../constants/routes';
 import gongan from '../../images/gongan.png';
+import { MEDIAS } from '../../constants/video';
 
-const COLORS = [blue['200'], blue['100'], blue['50']];
+const COLORS = [blue['300'], blue['200'], blue['100'], blue['50']];
 
 const sections = [
   {
+    id: 'economicCourses',
     name: '经济学课程',
     component: CoursesCards,
   },
   {
+    id: 'myMedias',
+    name: 'Sadhguru',
+    component: MediaCards,
+    props: {
+      media: MEDIAS.Sadhguru,
+    },
+  },
+  {
+    id: 'myCollections',
     name: '我的收藏',
     component: CollectionCards,
   },
   {
+    id: 'myNotes',
     name: '笔记本',
     component: GitbooksCards,
   },
@@ -38,6 +51,14 @@ const sections = [
 
 export const Home: FC = () => {
   document.title = '我的学习';
+
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      window.location.hash = '#';
+      window.location.hash = hash;
+    }
+  });
 
   return (
     <Box>
@@ -58,21 +79,24 @@ export const Home: FC = () => {
 
       <Box pt={1}>
         <Toolbar />
-        {sections.map(({ name, component: Component }, i) => (
+        {sections.map(({ name, component: Component, id, props = {} }, i) => (
           <Box
             key={name}
             pt={2}
             sx={{ background: alpha(COLORS[i], 0.2) }}
             borderTop={`.5px dotted ${alpha(COLORS[i], 1)}`}
           >
-            <Typography
-              variant="h5"
-              sx={{ ml: { xs: 2, md: 3 } }}
-              color="text.primary"
-            >
-              {name}
-            </Typography>
-            <Component />
+            <Link href={`#${id}`} underline="none" id={id}>
+              <Typography
+                variant="h5"
+                sx={{ ml: { xs: 2, md: 3 } }}
+                color="text.primary"
+              >
+                {name}
+              </Typography>
+            </Link>
+
+            <Component {...(props as any)} />
           </Box>
         ))}
       </Box>

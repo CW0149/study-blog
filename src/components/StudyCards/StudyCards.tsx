@@ -11,7 +11,7 @@ import { Box } from '@mui/system';
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-type Props = {
+export type StudyCardsProps = {
   data: {
     key: string | number;
     title: string;
@@ -26,7 +26,11 @@ type Props = {
 };
 const CARD_GAPPING_PERCENTAGE = 0.8;
 
-export const StudyCards: FC<Props> = ({ data, cardMedia, linkConfig }) => {
+export const StudyCards: FC<StudyCardsProps> = ({
+  data,
+  cardMedia,
+  linkConfig,
+}) => {
   return (
     <Box padding={{ xs: 2, md: 3 }}>
       <Box

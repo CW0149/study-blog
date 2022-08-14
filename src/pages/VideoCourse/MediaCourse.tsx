@@ -1,9 +1,10 @@
 import { CssBaseline, Skeleton, Stack, Toolbar } from '@mui/material';
 import { Box } from '@mui/system';
 import { FC, useEffect, useMemo, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { BCourse, Lesson } from '../../constants/types';
-import { fetchBvPlaylist } from '../../helpers/video';
+import { useParams, useSearchParams } from 'react-router-dom';
+import { Course, Lesson } from '../../constants/types';
+import { MEDIA_ID_TO_MEDIA } from '../../constants/video';
+import { fetchMediaList, fetchTlist } from '../../helpers/video';
 import { CoursesDrawer } from './CoursesDrawer';
 import { VideoCourseLesson } from './VideoCourseLesson';
 import { VideoCourseTopBar } from './VideoCourseTopBar';
@@ -12,34 +13,52 @@ const drawerWidth = 240;
 
 type Props = {
   parentPath: string;
-  data: BCourse[];
 };
-export const VideoCourse: FC<Props> = ({ data, parentPath }) => {
+export const MediaCourse: FC<Props> = ({ parentPath }) => {
   const [lessons, setLessons] = useState([] as Lesson[]);
   const [expanded, setExpanded] = useState(0);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { bvid } = useParams();
-  const course = useMemo(() => data.find((item) => item.bvid === bvid), [bvid]);
+  const { mid } = useParams();
+  const [searchParams] = useSearchParams();
+  const [menu, setMenu] = useState<Course[]>([]);
+  const media = useMemo(() => MEDIA_ID_TO_MEDIA[mid as string], [mid]);
 
   useEffect(() => {
-    if (!bvid) return;
+    const getData = async () => {
+      if (!mid) return;
+
+      const tlist = await fetchTlist(mid);
+
+      setMenu(
+        tlist.map((item) => ({
+          id: item.tid,
+          title: `${media.title}-${item.name}`,
+        }))
+      );
+    };
+
+    getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const course = useMemo(
+    () => menu.find((item) => String(item.id) === searchParams.get('tid')),
+    [menu, searchParams]
+  );
+
+  useEffect(() => {
+    if (!mid) return;
 
     setLoading(true);
     setLessons([]);
 
-    fetchBvPlaylist(bvid).then((lessons) => {
-      setLessons(
-        lessons.map((lesson, i) => ({
-          ...lesson,
-          // Add here to avoid rerendering VideoCourseLesson caused by course change
-          noteFolderName:
-            course?.noteFolderName && `${course?.noteFolderName}/${i + 1}`,
-        }))
-      );
+    const tid = searchParams.get('tid') as string;
+    fetchMediaList(mid, tid).then((lessons) => {
+      setLessons(lessons);
       setLoading(false);
     });
-  }, [bvid, course?.noteFolderName]);
+  }, [mid, searchParams]);
 
   if (!course) return null;
 
@@ -73,10 +92,13 @@ export const VideoCourse: FC<Props> = ({ data, parentPath }) => {
 
       <CoursesDrawer
         drawerWidth={drawerWidth}
-        courses={data.map((item) => ({ ...item, id: item.bvid }))}
+        courses={menu}
         drawerOpen={drawerOpen}
         handleDrawerToggle={handleDrawerToggle}
-        linkTo={(id) => `${parentPath}/${id}`}
+        linkTo={(id) => `${parentPath}/${mid}?tid=${id}`}
+        testActive={(location, id) =>
+          new URLSearchParams(location.search).get('tid') === String(id)
+        }
       />
 
       <Box

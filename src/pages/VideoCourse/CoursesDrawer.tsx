@@ -7,28 +7,26 @@ import Toolbar from '@mui/material/Toolbar';
 import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import { PATHS } from '../../constants/routes';
-import { BCourse } from '../../constants/types';
+import { Course } from '../../constants/types';
 
 interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window?: () => Window;
   drawerWidth: number;
-  courses: BCourse[];
+  courses: Course[];
   drawerOpen: boolean;
   handleDrawerToggle: () => void;
-  parentPath: string;
+
+  linkTo: (id: string) => string;
+  testActive?: (location: Window['location'], id: string) => boolean;
 }
 
 export const CoursesDrawer: FC<Props> = ({
-  window,
   drawerWidth,
   courses,
   drawerOpen,
   handleDrawerToggle,
-  parentPath,
+
+  linkTo,
+  testActive,
 }) => {
   const drawer = (
     <div>
@@ -41,10 +39,15 @@ export const CoursesDrawer: FC<Props> = ({
             <Typography>All</Typography>
           </MenuItem>
         </NavLink>
-        {courses.map(({ bvid, title }) => (
-          <NavLink key={bvid} to={`${parentPath}/${bvid}`}>
+        {courses.map(({ id, title }) => (
+          <NavLink key={id} to={linkTo(id)}>
             {({ isActive }) => (
-              <MenuItem selected={isActive}>
+              <MenuItem
+                selected={
+                  isActive &&
+                  (testActive ? testActive(window.location, id) : true)
+                }
+              >
                 <Typography noWrap>{title}</Typography>
               </MenuItem>
             )}
@@ -54,9 +57,6 @@ export const CoursesDrawer: FC<Props> = ({
     </div>
   );
 
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
-
   return (
     <Box
       component="nav"
@@ -64,7 +64,7 @@ export const CoursesDrawer: FC<Props> = ({
       aria-label="mailbox folders"
     >
       <Drawer
-        container={container}
+        container={document.body}
         variant="temporary"
         open={drawerOpen}
         onClose={handleDrawerToggle}

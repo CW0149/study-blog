@@ -7,11 +7,13 @@ import {
   NoteAlt,
   Storage,
 } from '@mui/icons-material';
-import { FC } from 'react';
-import { StudyCards } from '../../components/StudyCards';
+import { FC, useEffect, useState } from 'react';
+import { StudyCards, StudyCardsProps } from '../../components/StudyCards';
 import { GIT_BOOKS } from '../../constants/gitbooks';
 import { PATHS } from '../../constants/routes';
 import { COLLECTIONS, VIDEO_COURSES } from '../../constants/video';
+import { BMedia } from '../../constants/types';
+import { fetchTlist } from '../../helpers/video';
 
 const nameToComponent: Record<string, any> = {
   NoteAlt: NoteAlt,
@@ -100,6 +102,40 @@ export const CollectionCards: FC = () => {
         linkText: '进入',
       }}
       cardMedia={({ cover }) => <CardMedia component="img" image={cover} />}
+    />
+  );
+};
+
+export const MediaCards: FC<{ media: BMedia }> = ({ media }) => {
+  const [data, setData] = useState([] as StudyCardsProps['data']);
+
+  useEffect(() => {
+    const getData = async () => {
+      const tlist = await fetchTlist(media.mid);
+
+      setData(
+        tlist.map((item) => ({
+          key: item.tid,
+          title: `${media.title}-${item.name}`,
+          linkTo: `${PATHS.medias}/${media.mid}?tid=${item.tid}`,
+        }))
+      );
+    };
+
+    getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <StudyCards
+      data={data}
+      linkConfig={{
+        isUrl: false,
+        linkText: '进入',
+      }}
+      cardMedia={({ cover }) => (
+        <CardMedia component="img" image={media.cover} />
+      )}
     />
   );
 };

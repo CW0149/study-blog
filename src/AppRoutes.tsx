@@ -5,7 +5,7 @@ import { COLLECTIONS, VIDEO_COURSES } from './constants/video';
 import { Courses } from './pages/Courses';
 import { Gitbooks } from './pages/Gitbooks';
 import { Home } from './pages/Home';
-import { VideoCourse } from './pages/VideoCourse';
+import { MediaCourse, VideoCourse } from './pages/VideoCourse';
 
 export const AppRoutes: FC = () => {
   return (
@@ -27,6 +27,10 @@ export const AppRoutes: FC = () => {
           element={
             <VideoCourse data={COLLECTIONS} parentPath={PATHS.collections} />
           }
+        />
+        <Route
+          path={`${PATHS.medias}/:mid`}
+          element={<MediaCourse parentPath={PATHS.medias} />}
         />
       </Routes>
     </BrowserRouter>

@@ -1,3 +1,9 @@
+export type Course = {
+  id: string;
+  title: string;
+  noteFolderName?: string;
+};
+
 export type BCourse = {
   bvid: string;
   title: string;
@@ -5,8 +11,14 @@ export type BCourse = {
   noteFolderName?: string;
 };
 
+export type BMedia = {
+  mid: string;
+  title: string;
+  cover: string;
+};
+
 export type Lesson = {
-  cid: number;
+  id: number;
   title: string;
   url: string;
   num: number;
@@ -23,4 +35,15 @@ export type GitBook = {
   link: string;
   icon: any;
   color: string;
+};
+
+export type MediaItem = {
+  bvid: string;
+  title: string;
+  url: string;
+};
+
+export type MediaTlistItem = {
+  tid: string;
+  name: string;
 };

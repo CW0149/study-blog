@@ -4,4 +4,5 @@ export const PATHS = {
   courses: '/study/courses',
   gitbooks: '/study/gitbooks',
   collections: '/study/collections',
+  medias: '/study/medias',
 };
