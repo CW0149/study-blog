@@ -123,21 +123,18 @@ export const COLLECTIONS: BCourse[] = [
   },
 ];
 
-export const MEDIA_LIST: BMedia[] = [
-  {
-    mid: '489162014',
-    title: 'Sadhguru',
-    cover:
-      '//i1.hdslb.com/bfs/archive/5ada48cc1a9872994873f06b45a062893843dc1a.png',
-  },
-];
-
 export const MEDIAS: Record<string, BMedia> = {
   Sadhguru: {
     mid: '489162014',
     title: 'Sadhguru',
     cover:
       '//i1.hdslb.com/bfs/archive/5ada48cc1a9872994873f06b45a062893843dc1a.png',
+  },
+  Krishnamurti: {
+    mid: '501294651',
+    title: 'Krishnamurti',
+    cover:
+      '//i0.hdslb.com/bfs/archive/2b5c813822c2f57bd27032b3a9b25982bdb02bc8.jpg',
   },
 };
 

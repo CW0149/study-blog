@@ -21,7 +21,7 @@ import { PATHS } from '../../constants/routes';
 import gongan from '../../images/gongan.png';
 import { MEDIAS } from '../../constants/video';
 
-const COLORS = [blue['300'], blue['200'], blue['100'], blue['50']];
+const COLORS = [blue['400'], blue['300'], blue['200'], blue['100'], blue['50']];
 
 const sections = [
   {
@@ -35,6 +35,14 @@ const sections = [
     component: MediaCards,
     props: {
       media: MEDIAS.Sadhguru,
+    },
+  },
+  {
+    id: 'Krishnamurti',
+    name: 'Krishnamurti',
+    component: MediaCards,
+    props: {
+      media: MEDIAS.Krishnamurti,
     },
   },
   {
