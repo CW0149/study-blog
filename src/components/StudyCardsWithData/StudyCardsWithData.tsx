@@ -11,8 +11,8 @@ import { FC, useEffect, useState } from 'react';
 import { StudyCards, StudyCardsProps } from '../../components/StudyCards';
 import { GIT_BOOKS } from '../../constants/gitbooks';
 import { PATHS } from '../../constants/routes';
-import { COLLECTIONS, VIDEO_COURSES } from '../../constants/video';
-import { BMedia } from '../../constants/types';
+import { MY_COLLECTIONS, ECONOMIC_COURSES } from '../../constants/video';
+import { BCourse, BMedia } from '../../constants/types';
 import { fetchTlist } from '../../helpers/video';
 
 const nameToComponent: Record<string, any> = {
@@ -29,12 +29,19 @@ const getReactElementByName = (name: string, props = {}) => {
   return <Component {...props} />;
 };
 
-export const CoursesCards: FC = () => {
-  const data = VIDEO_COURSES.map((course) => ({
+type CollectionCardsProps = {
+  pathPrefix: string;
+  courses: BCourse[];
+};
+export const CollectionCards: FC<CollectionCardsProps> = ({
+  pathPrefix,
+  courses,
+}) => {
+  const data = courses.map((course) => ({
     key: course.bvid,
     title: course.title,
     cover: course.cover,
-    linkTo: `${PATHS.courses}/${course.bvid}`,
+    linkTo: `${pathPrefix}/${course.bvid}`,
   }));
 
   return (
@@ -82,26 +89,6 @@ export const GitbooksCards: FC = () => {
           })}
         </CardMedia>
       )}
-    />
-  );
-};
-
-export const CollectionCards: FC = () => {
-  const data = COLLECTIONS.map((course) => ({
-    key: course.bvid,
-    title: course.title,
-    cover: course.cover,
-    linkTo: `${PATHS.collections}/${course.bvid}`,
-  }));
-
-  return (
-    <StudyCards
-      data={data}
-      linkConfig={{
-        isUrl: false,
-        linkText: '进入',
-      }}
-      cardMedia={({ cover }) => <CardMedia component="img" image={cover} />}
     />
   );
 };

@@ -1,8 +1,12 @@
 import { FC } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { PATHS } from './constants/routes';
-import { COLLECTIONS, VIDEO_COURSES } from './constants/video';
-import { Courses } from './pages/Courses';
+import {
+  MY_COLLECTIONS,
+  ECONOMIC_COURSES,
+  FRONTEND_COURSES,
+} from './constants/video';
+import { Economics } from './pages/Economics';
 import { Gitbooks } from './pages/Gitbooks';
 import { Home } from './pages/Home';
 import { MediaCourse, VideoCourse } from './pages/VideoCourse';
@@ -13,19 +17,27 @@ export const AppRoutes: FC = () => {
       <Routes>
         <Route index element={<Home />} />
         <Route path={PATHS.study} element={<Home />} />
-
-        <Route path={PATHS.courses} element={<Courses />} />
+        {/* Individual pages, commonly not used */}
+        <Route path={PATHS.economics} element={<Economics />} />
         <Route path={PATHS.gitbooks} element={<Gitbooks />} />
+
+        {/* Detail pages */}
         <Route
-          path={`${PATHS.courses}/:bvid`}
+          path={`${PATHS.economics}/:bvid`}
           element={
-            <VideoCourse data={VIDEO_COURSES} parentPath={PATHS.courses} />
+            <VideoCourse data={ECONOMIC_COURSES} parentPath={PATHS.economics} />
+          }
+        />
+        <Route
+          path={`${PATHS.frontend}/:bvid`}
+          element={
+            <VideoCourse data={FRONTEND_COURSES} parentPath={PATHS.frontend} />
           }
         />
         <Route
           path={`${PATHS.collections}/:bvid`}
           element={
-            <VideoCourse data={COLLECTIONS} parentPath={PATHS.collections} />
+            <VideoCourse data={MY_COLLECTIONS} parentPath={PATHS.collections} />
           }
         />
         <Route

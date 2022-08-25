@@ -1,6 +1,6 @@
 import { BCourse, BMedia } from './types';
 
-export const VIDEO_COURSES: BCourse[] = [
+export const ECONOMIC_COURSES: BCourse[] = [
   {
     bvid: 'BV1ob411J7WC',
     title: '中国经济12讲 林毅夫',
@@ -90,7 +90,7 @@ export const VIDEO_COURSES: BCourse[] = [
   },
 ];
 
-export const COLLECTIONS: BCourse[] = [
+export const MY_COLLECTIONS: BCourse[] = [
   {
     bvid: 'BV1vA411W7fY',
     title: '冥想正念指南',
@@ -120,6 +120,99 @@ export const COLLECTIONS: BCourse[] = [
     title: '华尔街',
     cover:
       '//i2.hdslb.com/bfs/archive/bc6174b9358e702e703f89c30fcae2576105a3b2.png',
+  },
+];
+
+export const FRONTEND_COURSES: BCourse[] = [
+  {
+    bvid: 'BV1EM4y1F7en',
+    title: '前端工程师全栈指南',
+    cover:
+      '//i0.hdslb.com/bfs/archive/af08cdf45fa7c61008a5efbf10bb0a1366e37714.jpg',
+  },
+  {
+    bvid: 'BV1tb4y117ee',
+    title: '书写整洁代码',
+    cover:
+      '//i1.hdslb.com/bfs/archive/828bddb911818b22933bdd771870d9ced251383f.png',
+  },
+  {
+    bvid: 'BV1yL4y1F7Qg',
+    title: 'TypeScript完整开发指南 P1',
+    cover:
+      '//i1.hdslb.com/bfs/archive/34aebaa43a3ff3dff2ef2419d3d86b7afe7bbbed.jpg',
+  },
+  {
+    bvid: 'BV19i4y1m7mg',
+    title: 'TypeScript完整开发指南 P2',
+    cover:
+      '//i1.hdslb.com/bfs/archive/c8ea5e84a6df5b417c513ce795113f29c272ab3c.jpg',
+  },
+  {
+    bvid: 'BV1MF411T7rn',
+    title: '了解 TypeScript-2022',
+    cover:
+      '//i1.hdslb.com/bfs/archive/61fa311e418ee7e7aee1157f38b9a897a41ef75f.png',
+  },
+  {
+    bvid: 'BV1vA4y197C7',
+    title: 'JavaScript从入门到精通 P1',
+    cover:
+      '//i1.hdslb.com/bfs/archive/3bfb67e631ab261a324ba01285faaba4d4d86f00.jpg',
+  },
+  {
+    bvid: 'BV15S4y1N7Mu',
+    title: 'JavaScript从入门到精通 P2',
+    cover:
+      '//i1.hdslb.com/bfs/archive/f95394e197d598342ed79cda8df375290d8c0c74.jpg',
+  },
+  {
+    bvid: 'BV1T44y1W7Si',
+    title: 'NestJS 官方基础课程',
+    cover:
+      '//i1.hdslb.com/bfs/archive/7369b8497717e566376f7bca13b611ec18762582.png',
+  },
+  {
+    bvid: 'BV1G54y1o7RP',
+    title: 'Next.js 和 React P1',
+    cover:
+      '//i1.hdslb.com/bfs/archive/aa3a8526f699568bb4942daadee90069f415b5cf.png',
+  },
+  {
+    bvid: 'BV1v5411X7RG',
+    title: 'Next.js 和 React P2',
+    cover:
+      '//i1.hdslb.com/bfs/archive/43812bed51310468ef0b3f3fe736dd6ded7f84f2.png',
+  },
+  {
+    bvid: 'BV1E94y1m7J5',
+    title: 'Web3开发课程',
+    cover:
+      '//i1.hdslb.com/bfs/archive/368706873d619c298c451e325c7e2587c6c31ba1.png',
+  },
+  {
+    bvid: 'BV1NT4y1r74W',
+    title: 'SQL',
+    cover:
+      '//i1.hdslb.com/bfs/archive/b977b745951d41bea398b3683064794fce7f9e85.png',
+  },
+  {
+    bvid: 'BV1hS4y1m7Ma',
+    title: 'Docker and Kubernetes P1',
+    cover:
+      '//i1.hdslb.com/bfs/archive/fb0adcd555bdc2e6fcda13e8f08f468c26669bd3.png',
+  },
+  {
+    bvid: 'BV1zS4y1m7TU',
+    title: 'Docker and Kubernetes P2',
+    cover:
+      '//i1.hdslb.com/bfs/archive/d1b29a92e3b57ae6244cb5896809b0fe37443863.png',
+  },
+  {
+    bvid: 'BV1FP4y1M7j2',
+    title: 'React Native',
+    cover:
+      '//i1.hdslb.com/bfs/archive/09ade30cbe8ccf55081f8e528b749befe220c21f.png',
   },
 ];
 

@@ -11,7 +11,6 @@ import {
 import { blue, grey } from '@mui/material/colors';
 import {
   CollectionCards,
-  CoursesCards,
   GitbooksCards,
   MediaCards,
 } from '../../components/StudyCardsWithData';
@@ -19,15 +18,40 @@ import { ReactComponent as Logo } from '../../images/svg/logo.svg';
 import { ReactComponent as MobileLogo } from '../../images/svg/mobileLogo.svg';
 import { PATHS } from '../../constants/routes';
 import gongan from '../../images/gongan.png';
-import { MEDIAS } from '../../constants/video';
+import {
+  MEDIAS,
+  ECONOMIC_COURSES,
+  FRONTEND_COURSES,
+  MY_COLLECTIONS,
+} from '../../constants/video';
 
-const COLORS = [blue['400'], blue['300'], blue['200'], blue['100'], blue['50']];
+const COLORS = [
+  blue['500'],
+  blue['400'],
+  blue['300'],
+  blue['200'],
+  blue['100'],
+  blue['50'],
+];
 
 const sections = [
   {
     id: 'economicCourses',
     name: '经济学课程',
-    component: CoursesCards,
+    component: CollectionCards,
+    props: {
+      pathPrefix: PATHS.economics,
+      courses: ECONOMIC_COURSES,
+    },
+  },
+  {
+    id: 'frontend',
+    name: '前端课程',
+    component: CollectionCards,
+    props: {
+      pathPrefix: PATHS.frontend,
+      courses: FRONTEND_COURSES,
+    },
   },
   {
     id: 'Sadhguru',
@@ -49,6 +73,10 @@ const sections = [
     id: 'myCollections',
     name: '我的收藏',
     component: CollectionCards,
+    props: {
+      pathPrefix: PATHS.collections,
+      courses: MY_COLLECTIONS,
+    },
   },
   {
     id: 'myNotes',

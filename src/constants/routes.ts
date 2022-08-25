@@ -1,8 +1,9 @@
 export const PATHS = {
   home: '/',
   study: '/study',
-  courses: '/study/courses',
+  economics: '/study/economics',
   gitbooks: '/study/gitbooks',
-  collections: '/study/collections',
+  collections: '/study/my_collections',
   medias: '/study/medias',
+  frontend: '/study/frontend',
 };
